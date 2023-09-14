@@ -1,0 +1,42 @@
+\doxysection{ads7828.\+h}
+\hypertarget{ads7828_8h_source}{}\label{ads7828_8h_source}\index{lib/ads7828/ads7828.h@{lib/ads7828/ads7828.h}}
+\mbox{\hyperlink{ads7828_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ ADS7828\_h}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ ADS7828\_h}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Base\ I2C\ address,\ A1,A0\ can\ give\ 0x48,\ 0x49,\ 0x4A,\ 0x4B}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ ADS7828\_I2CADDR\ 0x48}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ Definitions\ for\ the\ command\ byte.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ OR\ the\ various\ bits\ together\ to\ construct\ the\ byte}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ MSB\ 7\ SD\ bit}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ SINGLE\_ENDED\ 0x80\ }\textcolor{comment}{//\ Single\ ended}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ DIFFERENTIAL\ 0x00\ }\textcolor{comment}{//\ Differential}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ Bits\ 6:4\ C2,\ C1,\ C0\ Channel\ selectors}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ No\ definitions\ needed\ since\ we\ will\ generate\ from\ channel}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ and\ whether\ differential\ or\ single-\/ended}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ Bits\ 3:2\ PD1,PD0\ Power\ down\ ,\ refernece\ selection}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ PD\_BTWN\_CONV\ 0x0\ \ \ \ }\textcolor{comment}{//\ Power\ down\ betweed\ A/D\ conversions}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ IREF\_OFF\_AD\_ON\ 0x04\ }\textcolor{comment}{//\ Internal\ reference\ OFF,\ A/D\ converter\ ON}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ IREF\_ON\_AD\_OFF\ 0x08\ }\textcolor{comment}{//\ Internal\ reference\ ON,\ A/D\ conveter\ OFF}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ IREF\_ON\_AD\_ON\ 0x0C\ \ }\textcolor{comment}{//\ Internal\ reference\ ON,\ A/D\ converter\ ON}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ LSB\ 1:0\ not\ used\ XX}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}esp\_err.h"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}esp\_log.h"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}esp\_system.h"{}}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{i2cdev_8h}{i2cdev.h}}>}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ esp\_err\_t\ \mbox{\hyperlink{ads7828_8h_a8aeb76770c434736dc897e45ea1710f4}{ads7828\_init\_desc}}(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ uint16\_t\ \mbox{\hyperlink{ads7828_8h_a4d08f997acb8fc6013ae374cec62b21a}{ads7828\_read}}(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ uint8\_t\ channel);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ uint16\_t\ \mbox{\hyperlink{ads7828_8h_a150893156c5062912bc6d6aa887878df}{ads7828\_readdif}}(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ uint8\_t\ channel);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ADS7828\_h\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

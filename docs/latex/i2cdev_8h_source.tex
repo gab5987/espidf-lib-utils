@@ -1,0 +1,99 @@
+\doxysection{i2cdev.\+h}
+\hypertarget{i2cdev_8h_source}{}\label{i2cdev_8h_source}\index{lib/i2cdev/i2cdev.h@{lib/i2cdev/i2cdev.h}}
+\mbox{\hyperlink{i2cdev_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_I2CDEV\_H\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_I2CDEV\_H\_\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <driver/i2c.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <freertos/FreeRTOS.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <freertos/semphr.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <esp\_err.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <soc/i2c\_reg.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ I2CDEV\_MAX\_STRETCH\_TIME\ I2C\_TIME\_OUT\_REG\_V}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00024\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ i2c\_port\_t\ \mbox{\hyperlink{structi2c__dev__t_a4b469f10acfaf5675d77fbe218c2ebe2}{port}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ i2c\_config\_t\ \mbox{\hyperlink{structi2c__dev__t_ab070791328671f783f9d6d45af3c4c24}{cfg}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structi2c__dev__t_a84ad7180602cb8e36b38c29e5b1c86c6}{addr}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ SemaphoreHandle\_t\ \mbox{\hyperlink{structi2c__dev__t_afb073a307ab7fb8817fb967107a958cd}{mutex}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structi2c__dev__t_ad177c30687f89873cc6a6437f08f7fe0}{timeout\_ticks}};\ \ }
+\DoxyCodeLine{00032\ \}\ \mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ada6d72ed6999ed0666c9119118f4febce2}{I2C\_DEV\_WRITE}}\ =\ 0,\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ada4fb6aad7884796673e5769379da58a63}{I2C\_DEV\_READ}}\ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \}\ \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ad}{i2c\_dev\_type\_t}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00051\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_a8a96ea2cf13f4b50a9f5d5e17f40e01b}{i2cdev\_init}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00060\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_a320d9f51aab144397f75448801aa85e4}{i2cdev\_done}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00068\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_a1c3a8d47ff8f1c985d6e1d98d668eb3d}{i2c\_dev\_create\_mutex}}(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_a1e9101fef8e50349d63157e0e01ced0f}{i2c\_dev\_delete\_mutex}}(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_ab0a314a2a3c6a8c7f9e59cf3b69466da}{i2c\_dev\_take\_mutex}}(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00092\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_a51961c290ebed5993c50e30009c40e75}{i2c\_dev\_give\_mutex}}(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00103\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_afd6bbe89f50ff620c1081d3617b469f8}{i2c\_dev\_probe}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ad}{i2c\_dev\_type\_t}}\ operation\_type);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00119\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_a9785ee992dab84bea0d7be83bb6e17fc}{i2c\_dev\_read}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *out\_data,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ out\_size,\ \textcolor{keywordtype}{void}\ *in\_data,\ \textcolor{keywordtype}{size\_t}\ in\_size);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00135\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_a22856483acc1f539d29e07876fc0418a}{i2c\_dev\_write}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *out\_reg,}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ out\_reg\_size,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *out\_data,\ \textcolor{keywordtype}{size\_t}\ out\_size);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00149\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_ae8b4a6110cdc2d2e47b2214285ce59fc}{i2c\_dev\_read\_reg}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ uint8\_t\ reg,}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *in\_data,\ \textcolor{keywordtype}{size\_t}\ in\_size);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00163\ esp\_err\_t\ \mbox{\hyperlink{i2cdev_8h_ad9827abf64603201a084148c0de097ec}{i2c\_dev\_write\_reg}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ uint8\_t\ reg,}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *out\_data,\ \textcolor{keywordtype}{size\_t}\ out\_size);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ I2C\_DEV\_TAKE\_MUTEX(dev)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\ \ \ \ do\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ esp\_err\_t\ \_\_\ =\ i2c\_dev\_take\_mutex(dev);\ \(\backslash\)}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_\ !=\ ESP\_OK)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ \_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ I2C\_DEV\_GIVE\_MUTEX(dev)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\ \ \ \ do\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ esp\_err\_t\ \_\_\ =\ i2c\_dev\_give\_mutex(dev);\ \(\backslash\)}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_\ !=\ ESP\_OK)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ \_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ I2C\_DEV\_CHECK(dev,\ X)\ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\ \ \ \ do\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ esp\_err\_t\ \_\_\_\ =\ X;\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_\_\ !=\ ESP\_OK)\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ I2C\_DEV\_GIVE\_MUTEX(dev);\ \(\backslash\)}}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ \_\_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ I2C\_DEV\_CHECK\_LOGE(dev,\ X,\ msg,\ ...)\ \ \ \(\backslash\)}}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\ \ \ \ do\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ esp\_err\_t\ \_\_\_\ =\ X;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_\_\ !=\ ESP\_OK)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ I2C\_DEV\_GIVE\_MUTEX(dev);\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ ESP\_LOGE(TAG,\ msg,\ \#\#\_\_VA\_ARGS\_\_);\ \(\backslash\)}}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ \_\_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\ \ \ \ \}\ while\ (0)}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_I2CDEV\_H\_\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

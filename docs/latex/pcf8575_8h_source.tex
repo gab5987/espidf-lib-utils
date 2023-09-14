@@ -1,0 +1,24 @@
+\doxysection{pcf8575.\+h}
+\hypertarget{pcf8575_8h_source}{}\label{pcf8575_8h_source}\index{lib/pcf8575/pcf8575.h@{lib/pcf8575/pcf8575.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_PCF8575\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_PCF8575\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{i2cdev_8h}{i2cdev.h}}>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <esp\_err.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ PCF8575\_I2C\_ADDR\_BASE\ 0x20}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00016\ esp\_err\_t\ pcf8575\_init\_desc(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00024\ esp\_err\_t\ pcf8575\_free\_desc(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00033\ esp\_err\_t\ pcf8575\_port\_read(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ uint16\_t\ *val);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00042\ esp\_err\_t\ pcf8575\_port\_write(\mbox{\hyperlink{structi2c__dev__t}{i2c\_dev\_t}}\ *dev,\ uint16\_t\ value);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_PCF8575\_H\_\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

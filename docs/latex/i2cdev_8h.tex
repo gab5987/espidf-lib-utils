@@ -1,0 +1,402 @@
+\doxysection{lib/i2cdev/i2cdev.h File Reference}
+\hypertarget{i2cdev_8h}{}\label{i2cdev_8h}\index{lib/i2cdev/i2cdev.h@{lib/i2cdev/i2cdev.h}}
+
+
+Simple library to work with i2c.  
+
+
+{\ttfamily \#include $<$driver/i2c.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/semphr.\+h$>$}\newline
+{\ttfamily \#include $<$esp\+\_\+err.\+h$>$}\newline
+{\ttfamily \#include $<$soc/i2c\+\_\+reg.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{i2cdev_8h_ae91711762e6cea5ce9f67a93b3dd3e59}\label{i2cdev_8h_ae91711762e6cea5ce9f67a93b3dd3e59} 
+\#define {\bfseries I2\+CDEV\+\_\+\+MAX\+\_\+\+STRETCH\+\_\+\+TIME}~I2\+C\+\_\+\+TIME\+\_\+\+OUT\+\_\+\+REG\+\_\+V
+\item 
+\#define \mbox{\hyperlink{i2cdev_8h_a097ee23eb474674923704d81d376e646}{I2\+C\+\_\+\+DEV\+\_\+\+TAKE\+\_\+\+MUTEX}}(dev)
+\item 
+\#define \mbox{\hyperlink{i2cdev_8h_a9d3fa5a5f0df1ad3e45350da5d647a22}{I2\+C\+\_\+\+DEV\+\_\+\+GIVE\+\_\+\+MUTEX}}(dev)
+\item 
+\#define \mbox{\hyperlink{i2cdev_8h_aeb71e2a5bb188971fa26aa14da35fad7}{I2\+C\+\_\+\+DEV\+\_\+\+CHECK}}(dev,  X)
+\item 
+\#define \mbox{\hyperlink{i2cdev_8h_a3522d16d02065700aaa099fc1b5aa9cd}{I2\+C\+\_\+\+DEV\+\_\+\+CHECK\+\_\+\+LOGE}}(dev,  X,  msg, ...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ad}{i2c\+\_\+dev\+\_\+type\+\_\+t}} \{ \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ada6d72ed6999ed0666c9119118f4febce2}{I2\+C\+\_\+\+DEV\+\_\+\+WRITE}} = 0
+, \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ada4fb6aad7884796673e5769379da58a63}{I2\+C\+\_\+\+DEV\+\_\+\+READ}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_a8a96ea2cf13f4b50a9f5d5e17f40e01b}{i2cdev\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init library. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_a320d9f51aab144397f75448801aa85e4}{i2cdev\+\_\+done}} ()
+\begin{DoxyCompactList}\small\item\em Finish work with library. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_a1c3a8d47ff8f1c985d6e1d98d668eb3d}{i2c\+\_\+dev\+\_\+create\+\_\+mutex}} (\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev)
+\begin{DoxyCompactList}\small\item\em Create mutex for device descriptor. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_a1e9101fef8e50349d63157e0e01ced0f}{i2c\+\_\+dev\+\_\+delete\+\_\+mutex}} (\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev)
+\begin{DoxyCompactList}\small\item\em Delete mutex for device descriptor. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_ab0a314a2a3c6a8c7f9e59cf3b69466da}{i2c\+\_\+dev\+\_\+take\+\_\+mutex}} (\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev)
+\begin{DoxyCompactList}\small\item\em Take device mutex. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_a51961c290ebed5993c50e30009c40e75}{i2c\+\_\+dev\+\_\+give\+\_\+mutex}} (\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev)
+\begin{DoxyCompactList}\small\item\em Give device mutex. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_afd6bbe89f50ff620c1081d3617b469f8}{i2c\+\_\+dev\+\_\+probe}} (const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev, \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ad}{i2c\+\_\+dev\+\_\+type\+\_\+t}} operation\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Check the availability of the device. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_a9785ee992dab84bea0d7be83bb6e17fc}{i2c\+\_\+dev\+\_\+read}} (const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev, const void \texorpdfstring{$\ast$}{*}out\+\_\+data, size\+\_\+t out\+\_\+size, void \texorpdfstring{$\ast$}{*}in\+\_\+data, size\+\_\+t in\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Read from slave device. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_a22856483acc1f539d29e07876fc0418a}{i2c\+\_\+dev\+\_\+write}} (const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev, const void \texorpdfstring{$\ast$}{*}out\+\_\+reg, size\+\_\+t out\+\_\+reg\+\_\+size, const void \texorpdfstring{$\ast$}{*}out\+\_\+data, size\+\_\+t out\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Write to slave device. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_ae8b4a6110cdc2d2e47b2214285ce59fc}{i2c\+\_\+dev\+\_\+read\+\_\+reg}} (const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev, uint8\+\_\+t reg, void \texorpdfstring{$\ast$}{*}in\+\_\+data, size\+\_\+t in\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Read from register with an 8-\/bit address. \end{DoxyCompactList}\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{i2cdev_8h_ad9827abf64603201a084148c0de097ec}{i2c\+\_\+dev\+\_\+write\+\_\+reg}} (const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev, uint8\+\_\+t reg, const void \texorpdfstring{$\ast$}{*}out\+\_\+data, size\+\_\+t out\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Write to register with an 8-\/bit address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simple library to work with i2c. 
+
+\begin{DoxyDate}{Date}
+Mon Aug 14 2023
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Gabriel Novalski @ Marine\+Telematics Equipamentos Nauticos 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{i2cdev_8h_aeb71e2a5bb188971fa26aa14da35fad7}\label{i2cdev_8h_aeb71e2a5bb188971fa26aa14da35fad7} 
+\index{i2cdev.h@{i2cdev.h}!I2C\_DEV\_CHECK@{I2C\_DEV\_CHECK}}
+\index{I2C\_DEV\_CHECK@{I2C\_DEV\_CHECK}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_DEV\_CHECK}{I2C\_DEV\_CHECK}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+DEV\+\_\+\+CHECK(\begin{DoxyParamCaption}\item[{}]{dev,  }\item[{}]{X }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ esp\_err\_t\ \_\_\_\ =\ X;\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\_\_\_\ !=\ ESP\_OK)\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ I2C\_DEV\_GIVE\_MUTEX(dev);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{i2cdev_8h_a3522d16d02065700aaa099fc1b5aa9cd}\label{i2cdev_8h_a3522d16d02065700aaa099fc1b5aa9cd} 
+\index{i2cdev.h@{i2cdev.h}!I2C\_DEV\_CHECK\_LOGE@{I2C\_DEV\_CHECK\_LOGE}}
+\index{I2C\_DEV\_CHECK\_LOGE@{I2C\_DEV\_CHECK\_LOGE}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_DEV\_CHECK\_LOGE}{I2C\_DEV\_CHECK\_LOGE}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+DEV\+\_\+\+CHECK\+\_\+\+LOGE(\begin{DoxyParamCaption}\item[{}]{dev,  }\item[{}]{X,  }\item[{}]{msg,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ esp\_err\_t\ \_\_\_\ =\ X;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\_\_\_\ !=\ ESP\_OK)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ I2C\_DEV\_GIVE\_MUTEX(dev);\ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ ESP\_LOGE(TAG,\ msg,\ \#\#\_\_VA\_ARGS\_\_);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{i2cdev_8h_a9d3fa5a5f0df1ad3e45350da5d647a22}\label{i2cdev_8h_a9d3fa5a5f0df1ad3e45350da5d647a22} 
+\index{i2cdev.h@{i2cdev.h}!I2C\_DEV\_GIVE\_MUTEX@{I2C\_DEV\_GIVE\_MUTEX}}
+\index{I2C\_DEV\_GIVE\_MUTEX@{I2C\_DEV\_GIVE\_MUTEX}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_DEV\_GIVE\_MUTEX}{I2C\_DEV\_GIVE\_MUTEX}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+DEV\+\_\+\+GIVE\+\_\+\+MUTEX(\begin{DoxyParamCaption}\item[{}]{dev }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ esp\_err\_t\ \_\_\ =\ \mbox{\hyperlink{i2cdev_8h_a51961c290ebed5993c50e30009c40e75}{i2c\_dev\_give\_mutex}}(dev);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\_\_\ !=\ ESP\_OK)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+\Hypertarget{i2cdev_8h_a097ee23eb474674923704d81d376e646}\label{i2cdev_8h_a097ee23eb474674923704d81d376e646} 
+\index{i2cdev.h@{i2cdev.h}!I2C\_DEV\_TAKE\_MUTEX@{I2C\_DEV\_TAKE\_MUTEX}}
+\index{I2C\_DEV\_TAKE\_MUTEX@{I2C\_DEV\_TAKE\_MUTEX}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_DEV\_TAKE\_MUTEX}{I2C\_DEV\_TAKE\_MUTEX}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+DEV\+\_\+\+TAKE\+\_\+\+MUTEX(\begin{DoxyParamCaption}\item[{}]{dev }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{do}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ esp\_err\_t\ \_\_\ =\ \mbox{\hyperlink{i2cdev_8h_ab0a314a2a3c6a8c7f9e59cf3b69466da}{i2c\_dev\_take\_mutex}}(dev);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\_\_\ !=\ ESP\_OK)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ad}\label{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ad} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_type\_t@{i2c\_dev\_type\_t}}
+\index{i2c\_dev\_type\_t@{i2c\_dev\_type\_t}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_type\_t}{i2c\_dev\_type\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ad}{i2c\+\_\+dev\+\_\+type\+\_\+t}}}
+
+I2C transaction type \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I2C\_DEV\_WRITE@{I2C\_DEV\_WRITE}!i2cdev.h@{i2cdev.h}}\index{i2cdev.h@{i2cdev.h}!I2C\_DEV\_WRITE@{I2C\_DEV\_WRITE}}}\Hypertarget{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ada6d72ed6999ed0666c9119118f4febce2}\label{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ada6d72ed6999ed0666c9119118f4febce2} 
+I2\+C\+\_\+\+DEV\+\_\+\+WRITE&Write operation \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I2C\_DEV\_READ@{I2C\_DEV\_READ}!i2cdev.h@{i2cdev.h}}\index{i2cdev.h@{i2cdev.h}!I2C\_DEV\_READ@{I2C\_DEV\_READ}}}\Hypertarget{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ada4fb6aad7884796673e5769379da58a63}\label{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ada4fb6aad7884796673e5769379da58a63} 
+I2\+C\+\_\+\+DEV\+\_\+\+READ&Read operation \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{i2cdev_8h_a1c3a8d47ff8f1c985d6e1d98d668eb3d}\label{i2cdev_8h_a1c3a8d47ff8f1c985d6e1d98d668eb3d} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_create\_mutex@{i2c\_dev\_create\_mutex}}
+\index{i2c\_dev\_create\_mutex@{i2c\_dev\_create\_mutex}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_create\_mutex()}{i2c\_dev\_create\_mutex()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+create\+\_\+mutex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev }\end{DoxyParamCaption})}
+
+
+
+Create mutex for device descriptor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Device descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_a1e9101fef8e50349d63157e0e01ced0f}\label{i2cdev_8h_a1e9101fef8e50349d63157e0e01ced0f} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_delete\_mutex@{i2c\_dev\_delete\_mutex}}
+\index{i2c\_dev\_delete\_mutex@{i2c\_dev\_delete\_mutex}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_delete\_mutex()}{i2c\_dev\_delete\_mutex()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+delete\+\_\+mutex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev }\end{DoxyParamCaption})}
+
+
+
+Delete mutex for device descriptor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Device descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_a51961c290ebed5993c50e30009c40e75}\label{i2cdev_8h_a51961c290ebed5993c50e30009c40e75} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_give\_mutex@{i2c\_dev\_give\_mutex}}
+\index{i2c\_dev\_give\_mutex@{i2c\_dev\_give\_mutex}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_give\_mutex()}{i2c\_dev\_give\_mutex()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+give\+\_\+mutex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev }\end{DoxyParamCaption})}
+
+
+
+Give device mutex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Device descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_afd6bbe89f50ff620c1081d3617b469f8}\label{i2cdev_8h_afd6bbe89f50ff620c1081d3617b469f8} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_probe@{i2c\_dev\_probe}}
+\index{i2c\_dev\_probe@{i2c\_dev\_probe}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_probe()}{i2c\_dev\_probe()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+probe (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev,  }\item[{\mbox{\hyperlink{i2cdev_8h_a4ce8352d119fb1c8a4f6e61d7a1f94ad}{i2c\+\_\+dev\+\_\+type\+\_\+t}}}]{operation\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+Check the availability of the device. 
+
+Issue an operation of {\ttfamily operation\+\_\+type} to the I2C device then stops.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Device descriptor \\
+\hline
+{\em operation\+\_\+type} & Operation type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK if device is available 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_a9785ee992dab84bea0d7be83bb6e17fc}\label{i2cdev_8h_a9785ee992dab84bea0d7be83bb6e17fc} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_read@{i2c\_dev\_read}}
+\index{i2c\_dev\_read@{i2c\_dev\_read}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_read()}{i2c\_dev\_read()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+read (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{out\+\_\+data,  }\item[{size\+\_\+t}]{out\+\_\+size,  }\item[{void \texorpdfstring{$\ast$}{*}}]{in\+\_\+data,  }\item[{size\+\_\+t}]{in\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Read from slave device. 
+
+Issue a send operation of {\ttfamily out\+\_\+data} register address, followed by reading {\ttfamily in\+\_\+size} bytes from slave into {\ttfamily in\+\_\+data} . Function is thread-\/safe.
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em dev} & Device descriptor \\
+\hline
+ & {\em out\+\_\+data} & Pointer to data to send if non-\/null \\
+\hline
+ & {\em out\+\_\+size} & Size of data to send \\
+\hline
+\mbox{\texttt{ out}}  & {\em in\+\_\+data} & Pointer to input data buffer \\
+\hline
+ & {\em in\+\_\+size} & Number of byte to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_ae8b4a6110cdc2d2e47b2214285ce59fc}\label{i2cdev_8h_ae8b4a6110cdc2d2e47b2214285ce59fc} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_read\_reg@{i2c\_dev\_read\_reg}}
+\index{i2c\_dev\_read\_reg@{i2c\_dev\_read\_reg}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_read\_reg()}{i2c\_dev\_read\_reg()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+read\+\_\+reg (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev,  }\item[{uint8\+\_\+t}]{reg,  }\item[{void \texorpdfstring{$\ast$}{*}}]{in\+\_\+data,  }\item[{size\+\_\+t}]{in\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Read from register with an 8-\/bit address. 
+
+Shortcut to \doxylink{i2cdev_8h_a9785ee992dab84bea0d7be83bb6e17fc}{i2c\+\_\+dev\+\_\+read()}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em dev} & Device descriptor \\
+\hline
+ & {\em reg} & Register address \\
+\hline
+\mbox{\texttt{ out}}  & {\em in\+\_\+data} & Pointer to input data buffer \\
+\hline
+ & {\em in\+\_\+size} & Number of byte to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_ab0a314a2a3c6a8c7f9e59cf3b69466da}\label{i2cdev_8h_ab0a314a2a3c6a8c7f9e59cf3b69466da} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_take\_mutex@{i2c\_dev\_take\_mutex}}
+\index{i2c\_dev\_take\_mutex@{i2c\_dev\_take\_mutex}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_take\_mutex()}{i2c\_dev\_take\_mutex()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+take\+\_\+mutex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev }\end{DoxyParamCaption})}
+
+
+
+Take device mutex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Device descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_a22856483acc1f539d29e07876fc0418a}\label{i2cdev_8h_a22856483acc1f539d29e07876fc0418a} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_write@{i2c\_dev\_write}}
+\index{i2c\_dev\_write@{i2c\_dev\_write}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_write()}{i2c\_dev\_write()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+write (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{out\+\_\+reg,  }\item[{size\+\_\+t}]{out\+\_\+reg\+\_\+size,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{out\+\_\+data,  }\item[{size\+\_\+t}]{out\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Write to slave device. 
+
+Write {\ttfamily out\+\_\+size} bytes from {\ttfamily out\+\_\+data} to slave into {\ttfamily out\+\_\+reg} register address. Function is thread-\/safe.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Device descriptor \\
+\hline
+{\em out\+\_\+reg} & Pointer to register address to send if non-\/null \\
+\hline
+{\em out\+\_\+reg\+\_\+size} & Size of register address \\
+\hline
+{\em out\+\_\+data} & Pointer to data to send \\
+\hline
+{\em out\+\_\+size} & Size of data to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_ad9827abf64603201a084148c0de097ec}\label{i2cdev_8h_ad9827abf64603201a084148c0de097ec} 
+\index{i2cdev.h@{i2cdev.h}!i2c\_dev\_write\_reg@{i2c\_dev\_write\_reg}}
+\index{i2c\_dev\_write\_reg@{i2c\_dev\_write\_reg}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2c\_dev\_write\_reg()}{i2c\_dev\_write\_reg()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2c\+\_\+dev\+\_\+write\+\_\+reg (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev,  }\item[{uint8\+\_\+t}]{reg,  }\item[{const void \texorpdfstring{$\ast$}{*}}]{out\+\_\+data,  }\item[{size\+\_\+t}]{out\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Write to register with an 8-\/bit address. 
+
+Shortcut to \doxylink{i2cdev_8h_a22856483acc1f539d29e07876fc0418a}{i2c\+\_\+dev\+\_\+write()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Device descriptor \\
+\hline
+{\em reg} & Register address \\
+\hline
+{\em out\+\_\+data} & Pointer to data to send \\
+\hline
+{\em out\+\_\+size} & Size of data to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_a320d9f51aab144397f75448801aa85e4}\label{i2cdev_8h_a320d9f51aab144397f75448801aa85e4} 
+\index{i2cdev.h@{i2cdev.h}!i2cdev\_done@{i2cdev\_done}}
+\index{i2cdev\_done@{i2cdev\_done}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2cdev\_done()}{i2cdev\_done()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2cdev\+\_\+done (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Finish work with library. 
+
+Uninstall i2c drivers.
+
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}
+\Hypertarget{i2cdev_8h_a8a96ea2cf13f4b50a9f5d5e17f40e01b}\label{i2cdev_8h_a8a96ea2cf13f4b50a9f5d5e17f40e01b} 
+\index{i2cdev.h@{i2cdev.h}!i2cdev\_init@{i2cdev\_init}}
+\index{i2cdev\_init@{i2cdev\_init}!i2cdev.h@{i2cdev.h}}
+\doxysubsubsection{\texorpdfstring{i2cdev\_init()}{i2cdev\_init()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t i2cdev\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init library. 
+
+The function must be called before any other functions of this library.
+
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success 
+\end{DoxyReturn}

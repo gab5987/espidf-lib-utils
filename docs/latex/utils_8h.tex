@@ -1,0 +1,65 @@
+\doxysection{lib/utils/utils.h File Reference}
+\hypertarget{utils_8h}{}\label{utils_8h}\index{lib/utils/utils.h@{lib/utils/utils.h}}
+
+
+Utils functions.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{utils_8h_ae8b243fdac3715a3da7c98b9a380eaa5}{BYTE\+\_\+\+TO\+\_\+\+BINARY\+\_\+\+PATTERN}}~\"{}\%c\%c\%c\%c\%c\%c\%c\%c\"{}
+\begin{DoxyCompactList}\small\item\em Macro patter to print a byte in binary. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{utils_8h_aa28480bfa03957b4f284c13e800ca8b0}{BYTE\+\_\+\+TO\+\_\+\+BINARY}}(byte)
+\begin{DoxyCompactList}\small\item\em Macro to print a byte in binary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utils functions. 
+
+\begin{DoxyDate}{Date}
+Thu Aug 17 2023
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Gabriel Novalski @ Marine\+Telematics Equipamentos Nauticos 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{utils_8h_aa28480bfa03957b4f284c13e800ca8b0}\label{utils_8h_aa28480bfa03957b4f284c13e800ca8b0} 
+\index{utils.h@{utils.h}!BYTE\_TO\_BINARY@{BYTE\_TO\_BINARY}}
+\index{BYTE\_TO\_BINARY@{BYTE\_TO\_BINARY}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{BYTE\_TO\_BINARY}{BYTE\_TO\_BINARY}}
+{\footnotesize\ttfamily \#define BYTE\+\_\+\+TO\+\_\+\+BINARY(\begin{DoxyParamCaption}\item[{}]{byte }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ ((byte)\&0x80\ ?\ \textcolor{charliteral}{'1'}\ :\ \textcolor{stringliteral}{'0'}),\ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((byte)\&0x40\ ?\ \textcolor{stringliteral}{'1'}\ :\ \textcolor{stringliteral}{'0'}),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((byte)\&0x20\ ?\ \textcolor{stringliteral}{'1'}\ :\ \textcolor{stringliteral}{'0'}),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((byte)\&0x10\ ?\ \textcolor{stringliteral}{'1'}\ :\ \textcolor{stringliteral}{'0'}),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((byte)\&0x08\ ?\ \textcolor{stringliteral}{'1'}\ :\ \textcolor{stringliteral}{'0'}),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((byte)\&0x04\ ?\ \textcolor{stringliteral}{'1'}\ :\ \textcolor{stringliteral}{'0'}),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((byte)\&0x02\ ?\ \textcolor{stringliteral}{'1'}\ :\ \textcolor{stringliteral}{'0'}),\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ((byte)\&0x01\ ?\ \textcolor{stringliteral}{'1'}\ :\ \textcolor{stringliteral}{'0'})}
+
+\end{DoxyCode}
+
+
+Macro to print a byte in binary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em byte} & Byte to print \\
+\hline
+\end{DoxyParams}
+\Hypertarget{utils_8h_ae8b243fdac3715a3da7c98b9a380eaa5}\label{utils_8h_ae8b243fdac3715a3da7c98b9a380eaa5} 
+\index{utils.h@{utils.h}!BYTE\_TO\_BINARY\_PATTERN@{BYTE\_TO\_BINARY\_PATTERN}}
+\index{BYTE\_TO\_BINARY\_PATTERN@{BYTE\_TO\_BINARY\_PATTERN}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{BYTE\_TO\_BINARY\_PATTERN}{BYTE\_TO\_BINARY\_PATTERN}}
+{\footnotesize\ttfamily \#define BYTE\+\_\+\+TO\+\_\+\+BINARY\+\_\+\+PATTERN~\"{}\%c\%c\%c\%c\%c\%c\%c\%c\"{}}
+
+
+
+Macro patter to print a byte in binary. 
+

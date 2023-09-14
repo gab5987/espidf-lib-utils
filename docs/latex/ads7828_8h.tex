@@ -1,0 +1,116 @@
+\doxysection{lib/ads7828/ads7828.h File Reference}
+\hypertarget{ads7828_8h}{}\label{ads7828_8h}\index{lib/ads7828/ads7828.h@{lib/ads7828/ads7828.h}}
+
+
+ADS7828 library, a 8-\/channel single-\/ended/4-\/channel differential 12-\/bit ADC from TI with an I2C interface.  
+
+
+{\ttfamily \#include \"{}esp\+\_\+err.\+h\"{}}\newline
+{\ttfamily \#include \"{}esp\+\_\+log.\+h\"{}}\newline
+{\ttfamily \#include \"{}esp\+\_\+system.\+h\"{}}\newline
+{\ttfamily \#include $<$i2cdev.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ads7828_8h_acb2759bc81c17da3024b2a95d5fdde60}\label{ads7828_8h_acb2759bc81c17da3024b2a95d5fdde60} 
+\#define {\bfseries ADS7828\+\_\+\+I2\+CADDR}~0x48
+\item 
+\Hypertarget{ads7828_8h_ac9f26930e6f28467ed8ad891918459d2}\label{ads7828_8h_ac9f26930e6f28467ed8ad891918459d2} 
+\#define {\bfseries SINGLE\+\_\+\+ENDED}~0x80
+\item 
+\Hypertarget{ads7828_8h_ac6d79430f353e2655d8ccc04ecbef956}\label{ads7828_8h_ac6d79430f353e2655d8ccc04ecbef956} 
+\#define {\bfseries DIFFERENTIAL}~0x00
+\item 
+\Hypertarget{ads7828_8h_a14e6ba62e065f872ebbf2f69dd3bafd8}\label{ads7828_8h_a14e6ba62e065f872ebbf2f69dd3bafd8} 
+\#define {\bfseries PD\+\_\+\+BTWN\+\_\+\+CONV}~0x0
+\item 
+\Hypertarget{ads7828_8h_ac41fc1d2e2865c6c66d0887a72b54de0}\label{ads7828_8h_ac41fc1d2e2865c6c66d0887a72b54de0} 
+\#define {\bfseries IREF\+\_\+\+OFF\+\_\+\+AD\+\_\+\+ON}~0x04
+\item 
+\Hypertarget{ads7828_8h_af775a2e341d9fd3ace9dd02e3552b12d}\label{ads7828_8h_af775a2e341d9fd3ace9dd02e3552b12d} 
+\#define {\bfseries IREF\+\_\+\+ON\+\_\+\+AD\+\_\+\+OFF}~0x08
+\item 
+\Hypertarget{ads7828_8h_a2ea62f4e254465f133b0d50a739bef38}\label{ads7828_8h_a2ea62f4e254465f133b0d50a739bef38} 
+\#define {\bfseries IREF\+\_\+\+ON\+\_\+\+AD\+\_\+\+ON}~0x0C
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+esp\+\_\+err\+\_\+t \mbox{\hyperlink{ads7828_8h_a8aeb76770c434736dc897e45ea1710f4}{ads7828\+\_\+init\+\_\+desc}} (\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev)
+\begin{DoxyCompactList}\small\item\em Initialize ADS7828 device descriptor. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{ads7828_8h_a4d08f997acb8fc6013ae374cec62b21a}{ads7828\+\_\+read}} (\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev, uint8\+\_\+t channel)
+\begin{DoxyCompactList}\small\item\em Read single-\/ended channel data. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{ads7828_8h_a150893156c5062912bc6d6aa887878df}{ads7828\+\_\+readdif}} (\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}dev, uint8\+\_\+t channel)
+\begin{DoxyCompactList}\small\item\em Read differential channel data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+ADS7828 library, a 8-\/channel single-\/ended/4-\/channel differential 12-\/bit ADC from TI with an I2C interface. 
+
+\begin{DoxyDate}{Date}
+2023-\/08-\/12 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Gabriel Novalski @ Marine\+Telematics Equipamentos Nauticos 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ads7828_8h_a8aeb76770c434736dc897e45ea1710f4}\label{ads7828_8h_a8aeb76770c434736dc897e45ea1710f4} 
+\index{ads7828.h@{ads7828.h}!ads7828\_init\_desc@{ads7828\_init\_desc}}
+\index{ads7828\_init\_desc@{ads7828\_init\_desc}!ads7828.h@{ads7828.h}}
+\doxysubsubsection{\texorpdfstring{ads7828\_init\_desc()}{ads7828\_init\_desc()}}
+{\footnotesize\ttfamily esp\+\_\+err\+\_\+t ads7828\+\_\+init\+\_\+desc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev }\end{DoxyParamCaption})}
+
+
+
+Initialize ADS7828 device descriptor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & I2C device descriptor. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ESP\+\_\+\+OK on success. 
+\end{DoxyReturn}
+\Hypertarget{ads7828_8h_a4d08f997acb8fc6013ae374cec62b21a}\label{ads7828_8h_a4d08f997acb8fc6013ae374cec62b21a} 
+\index{ads7828.h@{ads7828.h}!ads7828\_read@{ads7828\_read}}
+\index{ads7828\_read@{ads7828\_read}!ads7828.h@{ads7828.h}}
+\doxysubsubsection{\texorpdfstring{ads7828\_read()}{ads7828\_read()}}
+{\footnotesize\ttfamily uint16\+\_\+t ads7828\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev,  }\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Read single-\/ended channel data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & I2C device descriptor. \\
+\hline
+{\em channel} & Channel to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint16\+\_\+t Channel data. 
+\end{DoxyReturn}
+\Hypertarget{ads7828_8h_a150893156c5062912bc6d6aa887878df}\label{ads7828_8h_a150893156c5062912bc6d6aa887878df} 
+\index{ads7828.h@{ads7828.h}!ads7828\_readdif@{ads7828\_readdif}}
+\index{ads7828\_readdif@{ads7828\_readdif}!ads7828.h@{ads7828.h}}
+\doxysubsubsection{\texorpdfstring{ads7828\_readdif()}{ads7828\_readdif()}}
+{\footnotesize\ttfamily uint16\+\_\+t ads7828\+\_\+readdif (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structi2c__dev__t}{i2c\+\_\+dev\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{dev,  }\item[{uint8\+\_\+t}]{channel }\end{DoxyParamCaption})}
+
+
+
+Read differential channel data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & I2C device descriptor. \\
+\hline
+{\em channel} & Channel to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint16\+\_\+t Channel data. 
+\end{DoxyReturn}

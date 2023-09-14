@@ -1,0 +1,23 @@
+\doxysection{utils.\+h}
+\hypertarget{utils_8h_source}{}\label{utils_8h_source}\index{lib/utils/utils.h@{lib/utils/utils.h}}
+\mbox{\hyperlink{utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ \_\_UTILS\_H\_\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ \_\_UTILS\_H\_\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ BYTE\_TO\_BINARY\_PATTERN\ "{}\%c\%c\%c\%c\%c\%c\%c\%c"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ BYTE\_TO\_BINARY(byte)\ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ ((byte)\&0x80\ ?\ '1'\ :\ '0'),\ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((byte)\&0x40\ ?\ '1'\ :\ '0'),\ \(\backslash\)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((byte)\&0x20\ ?\ '1'\ :\ '0'),\ \(\backslash\)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((byte)\&0x10\ ?\ '1'\ :\ '0'),\ \(\backslash\)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((byte)\&0x08\ ?\ '1'\ :\ '0'),\ \(\backslash\)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((byte)\&0x04\ ?\ '1'\ :\ '0'),\ \(\backslash\)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((byte)\&0x02\ ?\ '1'\ :\ '0'),\ \(\backslash\)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ ((byte)\&0x01\ ?\ '1'\ :\ '0')}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_UTILS\_H\_\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

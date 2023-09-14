@@ -1,0 +1,76 @@
+\doxysection{i2c\+\_\+dev\+\_\+t Struct Reference}
+\hypertarget{structi2c__dev__t}{}\label{structi2c__dev__t}\index{i2c\_dev\_t@{i2c\_dev\_t}}
+
+
+{\ttfamily \#include $<$i2cdev.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+i2c\+\_\+port\+\_\+t \mbox{\hyperlink{structi2c__dev__t_a4b469f10acfaf5675d77fbe218c2ebe2}{port}}
+\begin{DoxyCompactList}\small\item\em I2C port number. \end{DoxyCompactList}\item 
+i2c\+\_\+config\+\_\+t \mbox{\hyperlink{structi2c__dev__t_ab070791328671f783f9d6d45af3c4c24}{cfg}}
+\begin{DoxyCompactList}\small\item\em I2C driver configuration. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structi2c__dev__t_a84ad7180602cb8e36b38c29e5b1c86c6}{addr}}
+\begin{DoxyCompactList}\small\item\em Unshifted address. \end{DoxyCompactList}\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{structi2c__dev__t_afb073a307ab7fb8817fb967107a958cd}{mutex}}
+\begin{DoxyCompactList}\small\item\em Device mutex. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structi2c__dev__t_ad177c30687f89873cc6a6437f08f7fe0}{timeout\+\_\+ticks}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+I2C device descriptor 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structi2c__dev__t_a84ad7180602cb8e36b38c29e5b1c86c6}\label{structi2c__dev__t_a84ad7180602cb8e36b38c29e5b1c86c6} 
+\index{i2c\_dev\_t@{i2c\_dev\_t}!addr@{addr}}
+\index{addr@{addr}!i2c\_dev\_t@{i2c\_dev\_t}}
+\doxysubsubsection{\texorpdfstring{addr}{addr}}
+{\footnotesize\ttfamily uint8\+\_\+t i2c\+\_\+dev\+\_\+t\+::addr}
+
+
+
+Unshifted address. 
+
+\Hypertarget{structi2c__dev__t_ab070791328671f783f9d6d45af3c4c24}\label{structi2c__dev__t_ab070791328671f783f9d6d45af3c4c24} 
+\index{i2c\_dev\_t@{i2c\_dev\_t}!cfg@{cfg}}
+\index{cfg@{cfg}!i2c\_dev\_t@{i2c\_dev\_t}}
+\doxysubsubsection{\texorpdfstring{cfg}{cfg}}
+{\footnotesize\ttfamily i2c\+\_\+config\+\_\+t i2c\+\_\+dev\+\_\+t\+::cfg}
+
+
+
+I2C driver configuration. 
+
+\Hypertarget{structi2c__dev__t_afb073a307ab7fb8817fb967107a958cd}\label{structi2c__dev__t_afb073a307ab7fb8817fb967107a958cd} 
+\index{i2c\_dev\_t@{i2c\_dev\_t}!mutex@{mutex}}
+\index{mutex@{mutex}!i2c\_dev\_t@{i2c\_dev\_t}}
+\doxysubsubsection{\texorpdfstring{mutex}{mutex}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t i2c\+\_\+dev\+\_\+t\+::mutex}
+
+
+
+Device mutex. 
+
+\Hypertarget{structi2c__dev__t_a4b469f10acfaf5675d77fbe218c2ebe2}\label{structi2c__dev__t_a4b469f10acfaf5675d77fbe218c2ebe2} 
+\index{i2c\_dev\_t@{i2c\_dev\_t}!port@{port}}
+\index{port@{port}!i2c\_dev\_t@{i2c\_dev\_t}}
+\doxysubsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily i2c\+\_\+port\+\_\+t i2c\+\_\+dev\+\_\+t\+::port}
+
+
+
+I2C port number. 
+
+\Hypertarget{structi2c__dev__t_ad177c30687f89873cc6a6437f08f7fe0}\label{structi2c__dev__t_ad177c30687f89873cc6a6437f08f7fe0} 
+\index{i2c\_dev\_t@{i2c\_dev\_t}!timeout\_ticks@{timeout\_ticks}}
+\index{timeout\_ticks@{timeout\_ticks}!i2c\_dev\_t@{i2c\_dev\_t}}
+\doxysubsubsection{\texorpdfstring{timeout\_ticks}{timeout\_ticks}}
+{\footnotesize\ttfamily uint32\+\_\+t i2c\+\_\+dev\+\_\+t\+::timeout\+\_\+ticks}
+
+HW I2C bus timeout (stretch time), in ticks. 80MHz APB clock ticks for ESP-\/\+IDF, CPU ticks for ESP8266. When this value is 0, I2\+CDEV\+\_\+\+MAX\+\_\+\+STRETCH\+\_\+\+TIME will be used 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/i2cdev/\mbox{\hyperlink{i2cdev_8h}{i2cdev.\+h}}\end{DoxyCompactItemize}
