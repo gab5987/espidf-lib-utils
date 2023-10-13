@@ -1,0 +1,52 @@
+\doxysection{lib/epd/epd4i2.h File Reference}
+\hypertarget{epd4i2_8h}{}\label{epd4i2_8h}\index{lib/epd/epd4i2.h@{lib/epd/epd4i2.h}}
+
+
+Library to work with Wave\+Share\textquotesingle{}s 4.\+2 inch B/W E-\/\+Paper Display.  
+
+
+{\ttfamily \#include $<$driver/gpio.\+h$>$}\newline
+{\ttfamily \#include $<$driver/spi\+\_\+master.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_epd_device}{Epd\+Device}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{epd4i2_8h_a2353642a16205a5703d3eee1a380b688}\label{epd4i2_8h_a2353642a16205a5703d3eee1a380b688} 
+\#define {\bfseries EPD\+\_\+\+WIDTH}~400
+\item 
+\Hypertarget{epd4i2_8h_acc00aa795cb4caf43eedb9d1ea33955d}\label{epd4i2_8h_acc00aa795cb4caf43eedb9d1ea33955d} 
+\#define {\bfseries EPD\+\_\+\+HEIGHT}~300
+\item 
+\Hypertarget{epd4i2_8h_a674d2906417814329e692f14adb89b12}\label{epd4i2_8h_a674d2906417814329e692f14adb89b12} 
+\#define {\bfseries EPD\+\_\+\+BUFFER\+\_\+\+SIZE}~((uint32\+\_\+t)(EPD\+\_\+\+WIDTH) \texorpdfstring{$\ast$}{*} (uint32\+\_\+t)(EPD\+\_\+\+HEIGHT) / 8)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{epd4i2_8h_a8fba8ae4dcfd11785c43c928ca0d3c65}\label{epd4i2_8h_a8fba8ae4dcfd11785c43c928ca0d3c65} 
+typedef struct \mbox{\hyperlink{struct_epd_device}{Epd\+Device}} {\bfseries Epd\+Device\+\_\+t}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{epd4i2_8h_a0204d644a1da8e717f95a0403c045ac0}\label{epd4i2_8h_a0204d644a1da8e717f95a0403c045ac0} 
+esp\+\_\+err\+\_\+t {\bfseries Epd\+\_\+\+Initilize} (\mbox{\hyperlink{struct_epd_device}{Epd\+Device\+\_\+t}} \texorpdfstring{$\ast$}{*}device)
+\item 
+\Hypertarget{epd4i2_8h_a2ba2cb5f2472b84589f311885fa4f0a4}\label{epd4i2_8h_a2ba2cb5f2472b84589f311885fa4f0a4} 
+void {\bfseries Epd\+\_\+\+Render} (\mbox{\hyperlink{struct_epd_device}{Epd\+Device\+\_\+t}} \texorpdfstring{$\ast$}{*}device)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Library to work with Wave\+Share\textquotesingle{}s 4.\+2 inch B/W E-\/\+Paper Display. 
+
+\begin{DoxyDate}{Date}
+2023-\/10--12 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Gabriel Novalski 
+\end{DoxyCopyright}
