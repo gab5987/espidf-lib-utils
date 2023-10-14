@@ -14,48 +14,101 @@
 \DoxyCodeLine{00015\ }
 \DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ EPD\_BUFFER\_SIZE\ ((uint32\_t)(EPD\_WIDTH)\ *\ (uint32\_t)(EPD\_HEIGHT)\ /\ 8)}}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ Struct\ refering\ to\ the\ display\ configuration}}
-\DoxyCodeLine{00020\ \textcolor{comment}{\ *\ */}}
-\DoxyCodeLine{00021\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_epd_device}{EpdDevice}}}
-\DoxyCodeLine{00022\ \{}
-\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Attached\ GPIO\ Pins}}
-\DoxyCodeLine{00024\ \ \ \ \ gpio\_num\_t\ busy,\ rst,\ dc,\ cs,\ clk,\ din;}
-\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ Refer\ to\ the\ pins\ used,\ defaults\ to\ SPI\ 3}}
-\DoxyCodeLine{00026\ \ \ \ \ spi\_host\_device\_t\ spi\_host;}
-\DoxyCodeLine{00027\ \ \ \ \ spi\_device\_handle\_t\ spi\_handler;}
-\DoxyCodeLine{00028\ \ \ \ \ u\_int8\_t\ *buffer;}
-\DoxyCodeLine{00029\ \};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_epd_device}{EpdDevice}}\ \mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00034\ \textcolor{comment}{\ *\ @brief\ Initializes\ and\ clears\ the\ epd\ displays}}
-\DoxyCodeLine{00035\ \textcolor{comment}{\ *\ @param\ device\ A\ pointer\ to\ a\ EpdDevice}}
-\DoxyCodeLine{00036\ \textcolor{comment}{\ *\ @returns\ ESP\_OK\ if\ setup\ correctly}}
-\DoxyCodeLine{00037\ \textcolor{comment}{\ *\ */}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
-\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
-\DoxyCodeLine{00040\ \{}
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00042\ \ \ \ \ esp\_err\_t\ Epd\_Initilize(\mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}}\ *device);}
-\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
-\DoxyCodeLine{00044\ \}}
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00046\ }
-\DoxyCodeLine{00047\ \textcolor{comment}{/*}}
-\DoxyCodeLine{00048\ \textcolor{comment}{\ *\ @brief\ Renders\ the\ buffer\ stored\ into\ the\ device}}
-\DoxyCodeLine{00049\ \textcolor{comment}{\ *\ @param\ device\ A\ pointer\ to\ a\ EpdDevice}}
-\DoxyCodeLine{00050\ \textcolor{comment}{\ *\ */}}
-\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
-\DoxyCodeLine{00052\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
-\DoxyCodeLine{00053\ \{}
-\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ Epd\_Render(\mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}}\ *device);}
-\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
-\DoxyCodeLine{00057\ \}}
-\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !\_4i2\_EPD\_H\_}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ EPD\_COLOR\_WHITE\ 0xff}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ EPD\_COLOR\_BLACK\ 0x00}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ Struct\ refering\ to\ the\ display\ configuration}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ */}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_epd_device}{EpdDevice}}}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Attached\ GPIO\ Pins}}
+\DoxyCodeLine{00027\ \ \ \ \ gpio\_num\_t\ busy,\ rst,\ dc,\ cs,\ clk,\ din;}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ Refer\ to\ the\ pins\ used,\ defaults\ to\ SPI\ 3}}
+\DoxyCodeLine{00029\ \ \ \ \ spi\_host\_device\_t\ spi\_host;}
+\DoxyCodeLine{00030\ \ \ \ \ spi\_device\_handle\_t\ spi\_handler;}
+\DoxyCodeLine{00031\ \ \ \ \ u\_int8\_t\ *buffer;}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_epd_device}{EpdDevice}}\ \mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00041\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Initializes\ and\ clears\ the\ epd\ displays}}
+\DoxyCodeLine{00042\ \textcolor{comment}{\ \ \ \ \ *\ @param\ device\ A\ pointer\ to\ a\ EpdDevice}}
+\DoxyCodeLine{00043\ \textcolor{comment}{\ \ \ \ \ *\ @returns\ ESP\_OK\ if\ setup\ correctly}}
+\DoxyCodeLine{00044\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00045\ \ \ \ \ esp\_err\_t\ Epd\_Initilize(\mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}}\ *device);}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00047\ \}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00051\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00052\ \{}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Renders\ the\ buffer\ stored\ into\ the\ device}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ \ \ \ \ *\ @param\ device\ A\ pointer\ to\ a\ EpdDevice}}
+\DoxyCodeLine{00057\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ Epd\_Render(\mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}}\ *device);}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00064\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00068\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Stores\ EPD\_COLOR\_WHITE\ in\ the\ devices\ buffer}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ \ \ \ \ *\ @param\ device\ A\ pointer\ to\ a\ EpdDevice}}
+\DoxyCodeLine{00070\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ Epd\_ClearDisplay(\mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}}\ *device);}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00073\ \}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00077\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Draw\ and\ stores\ a\ bitmap\ into\ the\ devices\ buffer}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ \ \ *\ @param\ device\ A\ pointer\ to\ a\ EpdDevice}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ \ \ *\ @param\ x\ X\ axis\ offset}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ \ \ *\ @param\ y\ Y\ axis\ offset}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ \ *\ @param\ w\ Bitmat\ width}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ \ *\ @param\ h\ Bitmat\ height}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ \ \ *\ @param\ color\_invert\ Inverts\ the\ bg/fg\ color}}
+\DoxyCodeLine{00088\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ Epd\_DisplayBmp(\mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}}\ *device,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ bmp[],\ \textcolor{keywordtype}{bool}\ color\_invert);}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00091\ \}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00095\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00096\ \{}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00099\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Receives\ a\ text\ and\ draws\ it\ into\ the\ devices\ buffer,\ might\ overrite}}
+\DoxyCodeLine{00100\ \textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ \ \ \ the\ buffer\ since\ it\ automatically\ breaks\ line}}
+\DoxyCodeLine{00101\ \textcolor{comment}{\ \ \ \ \ *\ @param\ device\ A\ pointer\ to\ a\ EpdDevice}}
+\DoxyCodeLine{00102\ \textcolor{comment}{\ \ \ \ \ *\ @param\ x\ X\ axis\ offset}}
+\DoxyCodeLine{00103\ \textcolor{comment}{\ \ \ \ \ *\ @param\ y\ Y\ axis\ offset}}
+\DoxyCodeLine{00104\ \textcolor{comment}{\ \ \ \ \ *\ @param\ txt\ Text\ to\ draw}}
+\DoxyCodeLine{00105\ \textcolor{comment}{\ \ \ \ \ *\ @param\ font\ Font\ to\ be\ used(8,\ 12,\ 16\ are\ available)}}
+\DoxyCodeLine{00106\ \textcolor{comment}{\ \ \ \ \ *\ @param\ color\_invert\ Inverts\ the\ bg/fg\ color}}
+\DoxyCodeLine{00107\ \textcolor{comment}{\ \ \ \ \ *\ */}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ Epd\_DrawText(\mbox{\hyperlink{struct_epd_device}{EpdDevice\_t}}\ *device,\ u\_int16\_t\ x,\ u\_int16\_t\ y,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *txt,\ \textcolor{keywordtype}{int}\ font,\ \textcolor{keywordtype}{bool}\ color\_invert);}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00110\ \}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !\_4i2\_EPD\_H\_}}
 
 \end{DoxyCode}

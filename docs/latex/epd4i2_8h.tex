@@ -23,6 +23,12 @@ struct \mbox{\hyperlink{struct_epd_device}{Epd\+Device}}
 \item 
 \Hypertarget{epd4i2_8h_a674d2906417814329e692f14adb89b12}\label{epd4i2_8h_a674d2906417814329e692f14adb89b12} 
 \#define {\bfseries EPD\+\_\+\+BUFFER\+\_\+\+SIZE}~((uint32\+\_\+t)(EPD\+\_\+\+WIDTH) \texorpdfstring{$\ast$}{*} (uint32\+\_\+t)(EPD\+\_\+\+HEIGHT) / 8)
+\item 
+\Hypertarget{epd4i2_8h_a307637e4c47bb32b9cd6672a026c12af}\label{epd4i2_8h_a307637e4c47bb32b9cd6672a026c12af} 
+\#define {\bfseries EPD\+\_\+\+COLOR\+\_\+\+WHITE}~0xff
+\item 
+\Hypertarget{epd4i2_8h_a57b81b98cbcbaf171f368e4cf05ea9f3}\label{epd4i2_8h_a57b81b98cbcbaf171f368e4cf05ea9f3} 
+\#define {\bfseries EPD\+\_\+\+COLOR\+\_\+\+BLACK}~0x00
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -38,6 +44,15 @@ esp\+\_\+err\+\_\+t {\bfseries Epd\+\_\+\+Initilize} (\mbox{\hyperlink{struct_ep
 \item 
 \Hypertarget{epd4i2_8h_a2ba2cb5f2472b84589f311885fa4f0a4}\label{epd4i2_8h_a2ba2cb5f2472b84589f311885fa4f0a4} 
 void {\bfseries Epd\+\_\+\+Render} (\mbox{\hyperlink{struct_epd_device}{Epd\+Device\+\_\+t}} \texorpdfstring{$\ast$}{*}device)
+\item 
+\Hypertarget{epd4i2_8h_a34cf16bd22b6a7ffec4c51771d70edc0}\label{epd4i2_8h_a34cf16bd22b6a7ffec4c51771d70edc0} 
+void {\bfseries Epd\+\_\+\+Clear\+Display} (\mbox{\hyperlink{struct_epd_device}{Epd\+Device\+\_\+t}} \texorpdfstring{$\ast$}{*}device)
+\item 
+\Hypertarget{epd4i2_8h_ae9c8afb0d6088561a1ac9a500ece74ca}\label{epd4i2_8h_ae9c8afb0d6088561a1ac9a500ece74ca} 
+void {\bfseries Epd\+\_\+\+Display\+Bmp} (\mbox{\hyperlink{struct_epd_device}{Epd\+Device\+\_\+t}} \texorpdfstring{$\ast$}{*}device, int x, int y, int w, int h, const unsigned char bmp\mbox{[}$\,$\mbox{]}, bool color\+\_\+invert)
+\item 
+\Hypertarget{epd4i2_8h_abd77ae3f6063fd3fccf25aff2e3b6578}\label{epd4i2_8h_abd77ae3f6063fd3fccf25aff2e3b6578} 
+void {\bfseries Epd\+\_\+\+Draw\+Text} (\mbox{\hyperlink{struct_epd_device}{Epd\+Device\+\_\+t}} \texorpdfstring{$\ast$}{*}device, u\+\_\+int16\+\_\+t x, u\+\_\+int16\+\_\+t y, const char \texorpdfstring{$\ast$}{*}txt, int font, bool color\+\_\+invert)
 \end{DoxyCompactItemize}
 
 

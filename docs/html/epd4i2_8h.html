@@ -106,6 +106,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a674d2906417814329e692f14adb89b12"><td class="memItemLeft" align="right" valign="top"><a id="a674d2906417814329e692f14adb89b12" name="a674d2906417814329e692f14adb89b12"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>EPD_BUFFER_SIZE</b>&#160;&#160;&#160;((uint32_t)(EPD_WIDTH) * (uint32_t)(EPD_HEIGHT) / 8)</td></tr>
 <tr class="separator:a674d2906417814329e692f14adb89b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a307637e4c47bb32b9cd6672a026c12af"><td class="memItemLeft" align="right" valign="top"><a id="a307637e4c47bb32b9cd6672a026c12af" name="a307637e4c47bb32b9cd6672a026c12af"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EPD_COLOR_WHITE</b>&#160;&#160;&#160;0xff</td></tr>
+<tr class="separator:a307637e4c47bb32b9cd6672a026c12af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57b81b98cbcbaf171f368e4cf05ea9f3"><td class="memItemLeft" align="right" valign="top"><a id="a57b81b98cbcbaf171f368e4cf05ea9f3" name="a57b81b98cbcbaf171f368e4cf05ea9f3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>EPD_COLOR_BLACK</b>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:a57b81b98cbcbaf171f368e4cf05ea9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -121,6 +127,15 @@ esp_err_t&#160;</td><td class="memItemRight" valign="bottom"><b>Epd_Initilize</b
 <tr class="memitem:a2ba2cb5f2472b84589f311885fa4f0a4"><td class="memItemLeft" align="right" valign="top"><a id="a2ba2cb5f2472b84589f311885fa4f0a4" name="a2ba2cb5f2472b84589f311885fa4f0a4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Epd_Render</b> (<a class="el" href="struct_epd_device.html">EpdDevice_t</a> *device)</td></tr>
 <tr class="separator:a2ba2cb5f2472b84589f311885fa4f0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34cf16bd22b6a7ffec4c51771d70edc0"><td class="memItemLeft" align="right" valign="top"><a id="a34cf16bd22b6a7ffec4c51771d70edc0" name="a34cf16bd22b6a7ffec4c51771d70edc0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Epd_ClearDisplay</b> (<a class="el" href="struct_epd_device.html">EpdDevice_t</a> *device)</td></tr>
+<tr class="separator:a34cf16bd22b6a7ffec4c51771d70edc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9c8afb0d6088561a1ac9a500ece74ca"><td class="memItemLeft" align="right" valign="top"><a id="ae9c8afb0d6088561a1ac9a500ece74ca" name="ae9c8afb0d6088561a1ac9a500ece74ca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Epd_DisplayBmp</b> (<a class="el" href="struct_epd_device.html">EpdDevice_t</a> *device, int x, int y, int w, int h, const unsigned char bmp[], bool color_invert)</td></tr>
+<tr class="separator:ae9c8afb0d6088561a1ac9a500ece74ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd77ae3f6063fd3fccf25aff2e3b6578"><td class="memItemLeft" align="right" valign="top"><a id="abd77ae3f6063fd3fccf25aff2e3b6578" name="abd77ae3f6063fd3fccf25aff2e3b6578"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Epd_DrawText</b> (<a class="el" href="struct_epd_device.html">EpdDevice_t</a> *device, u_int16_t x, u_int16_t y, const char *txt, int font, bool color_invert)</td></tr>
+<tr class="separator:abd77ae3f6063fd3fccf25aff2e3b6578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Library to work with WaveShare's 4.2 inch B/W E-Paper Display. </p>

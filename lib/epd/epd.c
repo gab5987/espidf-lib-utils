@@ -1,5 +1,8 @@
 #include "driver/gpio.h"
 #include "epd4i2.h"
+#include "epd_font/font_12x12.h"
+#include "epd_font/font_16x16.h"
+#include "epd_font/font_8x8.h"
 #include "freertos/portmacro.h"
 #include "stdbool.h"
 #include <esp_err.h>
@@ -8,6 +11,7 @@
 #include <freertos/projdefs.h>
 #include <freertos/task.h>
 #include <hal/gpio_types.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -225,8 +229,19 @@ uint16_t Epd_SetPartialRamArea(EpdDevice_t *device, uint16_t x, uint16_t y, uint
     return (7 + xe - x) / 8; // number of bytes to transfer
 }
 
+void Epd_Sleep(EpdDevice_t *device)
+{
+    Epd_WriteTransaction(device, 0x50, true);  // border floating
+    Epd_WriteTransaction(device, 0x17, false); // border floating
+    Epd_WriteTransaction(device, 0x02, true);  // power off
+    Epd_WaitBusy(device);
+    Epd_WriteTransaction(device, 0x07, true); // deep sleep
+    Epd_WriteTransaction(device, 0xa5, false);
+}
+
 void Epd_Render(EpdDevice_t *device)
 {
+    Epd_WakeUp(device);
     Epd_WriteTransaction(device, 0x13, true);
     for (uint32_t i = 0; i < EPD_BUFFER_SIZE; i++)
     {
@@ -235,6 +250,101 @@ void Epd_Render(EpdDevice_t *device)
     }
     Epd_WriteTransaction(device, 0x12, true); // display refresh
     Epd_WaitBusy(device);
+    Epd_Sleep(device);
+}
+
+void Epd_ClearDisplay(EpdDevice_t *device)
+{
+    memset(device->buffer, 0xff, EPD_BUFFER_SIZE);
+    Epd_Render(device);
+}
+
+void Epd_DrawPixel(EpdDevice_t *device, int16_t x, int16_t y, uint16_t color)
+{
+    if ((x < 0) || (x >= EPD_WIDTH) || (y < 0) || (y >= EPD_HEIGHT))
+        return;
+
+    uint16_t i = x / 8 + y * EPD_WIDTH / 8;
+    if ((y < 0) || (y >= EPD_HEIGHT))
+        return;
+    i = x / 8 + y * EPD_WIDTH / 8;
+
+    if (!color)
+        device->buffer[i] = (device->buffer[i] | (1 << (7 - x % 8)));
+    else
+        device->buffer[i] = (device->buffer[i] & (0xFF ^ (1 << (7 - x % 8))));
+}
+
+void Epd_DisplayBmp(EpdDevice_t *device, int x, int y, int w, int h, const unsigned char bmp[], bool color_invert)
+{
+    int16_t byte_width = (w + 7) / 8;
+
+    uint8_t byte = 0;
+    for (uint16_t j = 0; j < h; j++)
+    {
+        for (uint16_t i = 0; i < w; i++)
+        {
+            if (i & 7)
+                byte <<= 1;
+            else
+            {
+                byte = bmp[j * byte_width + i / 8];
+            }
+            uint16_t pixelcolor = 0x00;
+
+            if (color_invert)
+                pixelcolor = (byte & 0x80) ? EPD_COLOR_WHITE : EPD_COLOR_BLACK;
+            else
+                pixelcolor = (byte & 0x80) ? EPD_COLOR_BLACK : EPD_COLOR_WHITE;
+            uint16_t xd = x + i;
+            uint16_t yd = y + j;
+            Epd_DrawPixel(device, xd, yd, pixelcolor);
+        }
+    }
+}
+
+void Epd_DrawText(EpdDevice_t *device, u_int16_t x, u_int16_t y, const char *txt, int font, bool color_invert)
+{
+    unsigned const char **txt_font = NULL;
+    switch (font)
+    {
+    case 8:
+        txt_font = font_8x8;
+        break;
+    case 12:
+        txt_font = font_12x12;
+        break;
+    case 16:
+        txt_font = font_16x16;
+        break;
+    default:
+        return;
+    }
+
+    const int txtsize = strlen(txt);
+    const int available_linewidth = EPD_WIDTH - x - font;
+
+    int carriage_return = 0;
+
+    int k = 0;
+    for (int i = 0; i < txtsize; i++)
+    {
+        int charindex = txt[i] - 0x2f;
+        if (charindex > 0x7a || charindex < 0)
+            charindex = 0;
+        unsigned const char *bmp = txt_font[charindex];
+
+        if (k * font >= available_linewidth)
+        {
+            k = 0;
+            carriage_return++;
+        }
+
+        int dx = x + (font * k);
+        int dy = y + (carriage_return * font);
+        Epd_DisplayBmp(device, dx, dy, font, font, bmp, color_invert);
+        k++;
+    }
 }
 
 esp_err_t Epd_Initilize(EpdDevice_t *device)
@@ -298,8 +408,10 @@ esp_err_t Epd_Initilize(EpdDevice_t *device)
 
     Epd_SetPartialRamArea(device, 0, 0, EPD_WIDTH, EPD_HEIGHT);
 
-    Epd_Render(device);
+    // Epd_Render(device);
     Epd_WriteTransaction(device, 0x92, true); // partial out
+
+    Epd_Sleep(device);
 
     return ret;
 }
